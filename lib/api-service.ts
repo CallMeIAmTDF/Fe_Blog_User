@@ -10,7 +10,7 @@ import {
 
 class ApiService {
   private static instance: ApiService | undefined
-  private baseUrl = "http://localhost:8888/api/v1"
+  private baseUrl = "http://13.229.84.255:8888/api/v1"
   private accessToken = "";
   private constructor() {
     this.loadAccessToken();

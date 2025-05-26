@@ -79,8 +79,22 @@ export default function EditProfilePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    if(user.name === ""){
+      toast({
+        title: "Profile update failed",
+        description: "Ten la bat buoc",
+        duration: 1500,
+      })
+    }
     // await new Promise((resolve) => setTimeout(resolve, 1500))
     await apiService.updateUser(user)
+    const authStateStr = localStorage.getItem('authState');
+    if (authStateStr) {
+      const authState = JSON.parse(authStateStr);
+      authState.user.name = user.name;
+      authState.user.avatar = user.avatar ?? null;
+      localStorage.setItem('authState', JSON.stringify(authState));
+    }
 
     setIsLoading(false)
     toast({

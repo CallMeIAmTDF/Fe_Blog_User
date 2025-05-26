@@ -83,7 +83,7 @@ export function CommentSection({ blogId, comments: initialComments }: CommentSec
 
     try {
       // Gọi API để thêm bình luận
-      const response = await fetch("http://localhost:8888/api/v1/blog/comment", {
+      const response = await fetch("http://13.229.84.255:8888/api/v1/blog/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,14 +98,13 @@ export function CommentSection({ blogId, comments: initialComments }: CommentSec
       const result = await response.json()
 
       if (result.code === 200) {
-        // Tạo đối tượng comment từ phản hồi API
         const newCommentObj: Comment = {
           id: result.data.id,
           content: result.data.content,
           userResponse: {
-            id: user?.id || "",
-            name: user?.name || "",
-            avatar: user?.avatar || "",
+            id: JSON.parse(localStorage.getItem("authState") as string).user?.id || "",
+            name: JSON.parse(localStorage.getItem("authState") as string).user?.name || "",
+            avatar: JSON.parse(localStorage.getItem("authState") as string).user?.avatar || "",
           },
           leftValue: result.data.leftValue,
           rightValue: result.data.rightValue,
@@ -129,7 +128,7 @@ export function CommentSection({ blogId, comments: initialComments }: CommentSec
 
     try {
       // Gọi API để thêm trả lời
-      const response = await fetch("http://localhost:8888/api/v1/blog/comment", {
+      const response = await fetch("http://13.229.84.255:8888/api/v1/blog/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

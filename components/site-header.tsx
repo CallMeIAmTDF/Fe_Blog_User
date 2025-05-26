@@ -96,8 +96,8 @@ export function SiteHeader() {
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="icon" className="rounded-full">
                         <Avatar className="h-8 w-8">
-                          <AvatarImage src={user?.avatar || "/placeholder.svg"} alt={user?.name} />
-                          <AvatarFallback>{user?.name.substring(0, 2).toUpperCase()}</AvatarFallback>
+                          <AvatarImage src={JSON.parse(localStorage.getItem("authState") as string).user.avatar || "/placeholder.svg"} alt={user?.name} />
+                          <AvatarFallback>{JSON.parse(localStorage.getItem("authState") as string).user?.name.substring(0, 2).toUpperCase()}</AvatarFallback>
                         </Avatar>
                       </Button>
                     </DropdownMenuTrigger>

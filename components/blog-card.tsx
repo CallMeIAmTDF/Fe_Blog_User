@@ -72,7 +72,7 @@ export function BlogCard({ post, hideAuthor = false, isAuthor = false }: BlogCar
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
                             onClick={async () => {
-                              const API = "http://localhost:8888/api/v1"
+                              const API = "http://13.229.84.255:8888/api/v1"
                               if (window.confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
                                 const res = await fetch(`${API}/blog/post/${post.id}`, {
                                   method: "DELETE",

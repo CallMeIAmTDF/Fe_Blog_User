@@ -197,10 +197,10 @@ export default function NewBlogPage() {
           <h1 className="text-3xl font-bold tracking-tight">Tạo Bài Viết Mới</h1>
           <div className="flex items-center gap-2">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={user?.avatar} alt={user?.name} />
-              <AvatarFallback>{user?.name?.substring(0, 2).toUpperCase()}</AvatarFallback>
+              <AvatarImage src={JSON.parse(localStorage.getItem("authState") as string).user.avatar} alt={user?.name} />
+              <AvatarFallback>{JSON.parse(localStorage.getItem("authState") as string).user.name?.substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
-            <span className="text-sm font-medium">{user?.name}</span>
+            <span className="text-sm font-medium">{JSON.parse(localStorage.getItem("authState") as string).user.name}</span>
           </div>
         </div>
 

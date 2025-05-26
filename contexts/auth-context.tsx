@@ -41,7 +41,7 @@ export interface RegisterData {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-const API_BASE_URL = "http://localhost:8888/api/v1"
+const API_BASE_URL = "http://13.229.84.255:8888/api/v1"
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [authState, setAuthState] = useState<AuthState>({
@@ -116,7 +116,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const data = await response.json()
 
       if (data.code === 201) {
-        // Đăng ký thành công, nhưng cần xác minh email
         return true
       }
       return false
